@@ -1016,7 +1016,7 @@ def gen_drawdown_table(returns, top=10):
 
     for i, (peak, valley, recovery) in enumerate(drawdown_periods):
         if pd.isnull(recovery):
-            df_drawdowns.loc[i, "Duration"] = np.nan
+            df_drawdowns.loc[i, "Duration"] = len(pd.date_range(peak, returns.index[-1], freq="D"))
         else:
             df_drawdowns.loc[i, "Duration"] = len(
                 pd.date_range(peak, recovery, freq="D")
