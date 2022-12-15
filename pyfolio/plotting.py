@@ -447,8 +447,8 @@ def plot_drawdown_periods(returns, top=10, ax=None, **kwargs):
     for i, (peak, recovery) in df_drawdowns[
         ["Peak date", "Recovery date"]
     ].iterrows():
-        if not pd.isna(peak) and not pd.isna(recovery):
-            if pd.isnull(recovery):
+        if not pd.isna(peak):
+            if pd.isnull(recovery) or pd.isna(recovery):
                 recovery = returns.index[-1]
             ax.fill_between(
                 (peak, recovery), lim[0], lim[1], alpha=0.4, color=colors[i]
