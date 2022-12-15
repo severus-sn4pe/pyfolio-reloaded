@@ -1019,7 +1019,7 @@ def gen_drawdown_table(returns, top=10):
             df_drawdowns.loc[i, "Duration"] = np.nan
         else:
             df_drawdowns.loc[i, "Duration"] = len(
-                pd.date_range(peak, recovery, freq="B")
+                pd.date_range(peak, recovery, freq="D")
             )
         df_drawdowns.loc[i, "Peak date"] = peak.to_pydatetime().strftime(
             "%Y-%m-%d"
